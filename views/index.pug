@@ -6,12 +6,12 @@ block content
     if registrations.length
         table.listing-table.table-dark.table-striped
             tr
-                th Name
-                th Email
+                th(style="vertical-align: middle;") Name
+                th(style="vertical-align: middle;") Email
             each registration in registrations
 
                 tr
-                    td  #{registration.name}
-                    td  #{registration.email}
+                    td(style="vertical-align: middle;")  #{registration.name}
+                    td(style="vertical-align: middle;")  #{registration.email}
     else
         p No registrations yet :(

@@ -9,14 +9,12 @@ const basic = auth.basic({
 const {check, validationResult} = require("express-validator");
 const Registration = mongoose.model('Registration');
 router.get('/', function(req, res) {
-    res.render('home',{title: 'home page'});
+    res.render('menu',{title: 'home page'});
 });
 router.get('/register', function(req, res) {
-    res.render('form',{title: 'home page'});
+    res.render('form',{title: 'Registration form'});
 });
-router.get('/menu', function(req, res) {
-    res.render('register',{title: 'Registration form'});
-});
+
 router.get('/registrations', basic.check((req,res) => {
    Registration.find()
        .then((registrations)=>{
@@ -28,18 +26,20 @@ router.get('/registrations', basic.check((req,res) => {
            res.send('Sorry! Something went wrong.');});
 }));
 
-router.post('/',
+router.post('/register',
     [
         check('name')
             .isLength({min: 1})
-            .withMessage('please enter a name'),
+            .withMessage(' Please enter a name'),
         check('email')
             .isLength({min: 1})
-            .withMessage('Please enter a email'),
+            .withMessage(' Please enter a email'),
     ],
     function(req,res) {
-        console.log(req.body);
+
+
         const errors = validationResult(req);
+        // console.log(errors);
         if (errors.isEmpty()) {
             const registration = new Registration(req.body);
             registration.save()
@@ -47,7 +47,7 @@ router.post('/',
                     res.render('thankyou', {title: "Registration Success"});
                 })
                 .catch((err) => {
-                    console.log(err);
+
 
                     res.send("Sorry! Something went wrong.");
                 });

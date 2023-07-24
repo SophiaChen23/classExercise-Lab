@@ -1,13 +1,22 @@
-extends layout
+
+
+extends home1
 
 block content
+
     -data = data || {}
+
+    |
+
     if errors
-        ul
-            for error in errors
-                li = error.msg
-    h2(style="text-align: center;") register to subscribe
-    form(action = "." method = "POST" class = "form-registration")
+        ul.error-list
+            li(class = "cat")
+            each error in errors
+                li  <span style="color: red;font-weight: bold;">!Error: </span> #{error.msg}
+
+
+    h2(class="pig") Register to subscribe
+    form(action = "/register" method = "POST" class = "form-registration")
         label(for="name") Name:
         input(
             type = "text"
@@ -27,6 +36,6 @@ block content
         )
         input(
             type = "submit"
-            value = "Submit"
+            value = "Register"
             class = "btn btn-lg btn-primary btn-block"
         )

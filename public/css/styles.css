@@ -1,6 +1,7 @@
-body{
+main{
     padding: 40px 10px;
     background-color: #daaa0e;
+    height: 800px;
 
 }
 .listening-reg h1 {
@@ -43,18 +44,28 @@ body{
 }
 
 /*styles for listing tables*/
-.listening-table {
-    width:100%;
-}
-.listing-table th,
-.listening-table td {
-    padding: 10px;
-    border-bottom: 1px solid #666;
+.listing-table {
+    width: 60%;
+    margin-left:0px;
+    vertical-align: middle;
 }
 .listing-table th{
-    background: #000;
-    color: #fff;
+    vertical-align: middle;
+    background: black;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    border-bottom: 1px solid #666;
 }
+.listing-table td {
+    vertical-align: middle;
+    background: white;
+    color: black;
+    font-weight: bold;
+    padding: 30px;
+    border-bottom: 1px solid #666;
+}
+
 .listing-table td:first-child,
 .listing-table th:first-child {
     border-right: 1px solid #666;
@@ -76,6 +87,7 @@ nav ul li {
 nav ul li:not(:last-child) {
     margin-right: 10px;
 }
+
 nav ul li a {
     text-decoration: none;
     color: white;
@@ -85,11 +97,15 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 nav ul li:last-child {
-    margin-left: 10px;
+    margin-left: 700px;
+}
+
+nav ul li:first-child {
+    margin-left: 90px;
 }
 
 body {
-    width: 3600px;
+    width: 2600px;
     left: 5%;
     background-color: #daaa0e;
     height: 640px;
@@ -140,14 +156,20 @@ body #intro-container #intro-text h3 {
     position: relative;
     top: 22%;
     left: 24%;
+    font-size: 16px;
+
 }
 body #intro-container #intro-text p {
+    font-family: Arial, Helvetica, Sans-Serif;
     position: relative;
-    top: 24%;
-    left: 20%;
-    font-size: 0.8rem;
+    top: 22%;
+    left: 8%;
+    font-size: 16px;
+
 }
+
 body #intro-container #intro-image {
+    background-color:white;
     border: 12px solid white;
     height: 600px;
     position: relative;
@@ -156,6 +178,28 @@ body #intro-container #intro-image {
 body #intro-container #intro-image img {
     max-width: 1200px;
     height: 600px;
+    height: 99.5%;
+    width:100.2%;
 }
 
 /*# sourceMappingURL=styles1.css.map */
+ul.error-list {
+    list-style: none; /* Remove the default bullet points */
+    text-align: center; /* Center-align the list items */
+}
+
+footer {
+    position: relative;
+    bottom: -20px; /* Adjust the distance from the bottom */
+    left: 60px; /* Adjust the distance from the right */
+    text-align: left;
+}
+.pig{
+    text-align: center;
+    font-weight: bold;
+    margin-top: 80px;
+    /* Add any other styles you want for the heading here */
+}
+.cat{
+    margin-top: 40px;
+}
