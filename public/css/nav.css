@@ -1,0 +1,26 @@
+nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+nav ul li {
+  align-items: center;
+  left: 10px;
+  margin-left: 20px;
+}
+nav ul li:not(:last-child) {
+  margin-right: 10px;
+}
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  padding: 5px;
+}
+nav ul li a:hover {
+  text-decoration: underline;
+}
+nav ul li:last-child {
+  margin-left: 10px;
+}
+
+/*# sourceMappingURL=nav.css.map */
