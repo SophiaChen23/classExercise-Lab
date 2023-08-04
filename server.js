@@ -1,5 +1,6 @@
 var express = require('express');
 var passport = require('passport');
+const session = require('express-session');
 var Strategy = require('passport-local').Strategy;
 var db = require('./db');
 
@@ -8,6 +9,7 @@ var db = require('./db');
 //
 // The local strategy requires a `verify` function which receives the credentials
 // (`username` and `password`) submitted by the user.
+
 passport.use(new Strategy(
   function(username, password, cb) {
     db.users.findByUsername(username, function(err, user) {
@@ -50,7 +52,17 @@ app.set('view engine', 'ejs');
 // logging, parsing, and session handling.
 app.use(require('morgan')('combined'));
 app.use(require('body-parser').urlencoded({ extended: true }));
-app.use(require('express-session')({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
+
+
+app.use(require("express-session")({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        secure: false, // Set to true if using HTTPS
+        maxAge: 60000 // Session duration in milliseconds (60 seconds)
+    }
+}));
 
 // Initialize Passport and restore authentication state, if any, from the
 // session.
@@ -80,10 +92,20 @@ app.post('/login',
     });
 app.get('/logout',
     function (req, res){
-        req.logout(function () {});
-    res.redirect('/');
+        // req.logout(function () {});
+        // req.session.destroy(function (err) {
+        //     if (err) {
+        //         console.error('Error destroying session:', err);
+        //     }
+        //
+        // });
+        res.clearCookie('connect.sid');
+        res.redirect('/');
     });
 
 
 
-app.listen(3000);
+
+app.listen(3000, () => {
+    console.log('Server started on port 3000');
+});
