@@ -21,6 +21,7 @@ main{
 }
 .form-registration input{
     width:100%;
+    /*flex-basis: 48%;*/
     margin: 0px 0 10px;
 }
 .form-registration .btn{
@@ -66,8 +67,8 @@ main{
     border-bottom: 1px solid #666;
 }
 
-.listing-table td:first-child,
-.listing-table th:first-child {
+.listing-table td,
+.listing-table th {
     border-right: 1px solid #666;
 }
 

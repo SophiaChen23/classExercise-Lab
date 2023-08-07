@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const router = express.Router();
 const path = require('path');
 const auth = require('http-auth');
+const bcrypt = require('bcrypt');
 const basic = auth.basic({
     file: path.join(__dirname, '../users.htpasswd'),
 });
@@ -35,13 +36,18 @@ router.post('/register',
             .isLength({min: 1})
             .withMessage(' Please enter a email'),
     ],
-    function(req,res) {
+    async(req,res) => {
 
 
         const errors = validationResult(req);
         // console.log(errors);
         if (errors.isEmpty()) {
             const registration = new Registration(req.body);
+
+            const salt = await bcrypt.genSalt(10);
+            registration.password = await bcrypt.hash(registration.password, salt);
+
+
             registration.save()
                 .then(() => {
                     res.render('thankyou', {title: "Registration Success"});
@@ -62,3 +68,5 @@ router.post('/register',
     }
     );
 module.exports = router;
+
+

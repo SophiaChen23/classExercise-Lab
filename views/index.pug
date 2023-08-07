@@ -8,10 +8,14 @@ block content
             tr
                 th(style="vertical-align: middle;") Name
                 th(style="vertical-align: middle;") Email
+                th(style="vertical-align: middle;") Username
+                th(style="vertical-align: middle;") Password
             each registration in registrations
 
                 tr
                     td(style="vertical-align: middle;")  #{registration.name}
                     td(style="vertical-align: middle;")  #{registration.email}
+                    td(style="vertical-align: middle;")  #{registration.username}
+                    td(style="vertical-align: middle;")  #{registration.password}
     else
         p No registrations yet :(
