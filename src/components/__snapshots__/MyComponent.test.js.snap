@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyComponent should render initial layout 1`] = `
+[
+  <div>
+    <input
+      onChange={[Function]}
+      type="test"
+    />
+  </div>,
+]
+`;
